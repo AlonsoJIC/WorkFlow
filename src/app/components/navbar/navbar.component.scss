@@ -1,0 +1,21 @@
+@import "../../../styles.scss";
+.navbar{
+  background-color: rgba(0, 0, 0, 0.651);
+}
+.container {
+  padding: 0;
+}
+.navbar a {
+  color: white;
+}
+.navbar a:hover {
+  color: rgb(95, 97, 97);
+}
+.navbarSpan{
+  @include titles(100%);
+  color: var(--white);
+  letter-spacing: -0.1em;
+}
+.navbarSpan:hover {
+  color: rgb(224, 247, 143);
+}

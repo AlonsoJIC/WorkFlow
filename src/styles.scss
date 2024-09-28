@@ -1,1 +1,23 @@
-/* You can add global styles to this file, and also import other style files */
+ /*COLORS */
+$bg-gradient: linear-gradient(
+  180deg,
+  rgba(0, 0, 0, 0.6) 0%,
+  rgba(0, 0, 0, 0.685) 100%
+);
+:root {
+  --white: #ffffff;
+  --black: #000000;
+  }
+
+@mixin titles($valor){
+  font-weight:bolder;
+  font-size: $valor;
+  letter-spacing: -5px;
+  line-height: 0.75em;
+  text-transform: uppercase;
+}
+@mixin normalText($valor){
+  font-size: $valor;
+  line-height: 1.3em;
+  color: var(--white);
+}
