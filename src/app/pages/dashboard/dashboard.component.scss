@@ -1,0 +1,54 @@
+/* Contenedor principal */
+.app-container {
+  display: flex;
+  height: 100vh;
+}
+
+/* Estilos para la barra lateral */
+.app-left {
+  width: 250px;
+  background-color: #000000;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  border-right: 1px rgba(255, 255, 255, 0.459) solid;
+}
+
+.nav-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.nav-list-item {
+  margin-bottom: 20px;
+}
+
+.nav-list-link {
+  display: flex;
+  align-items: center;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+}
+
+.nav-list-link svg {
+  margin-right: 10px;
+  stroke: #f3c385;
+  transition: stroke 0.3s ease;
+}
+.nav-list-link:hover {
+  color: #f7b425;
+}
+.nav-list-link:hover svg {
+  stroke: #f7b425;
+}
+
+/* Estilo para el item activo */
+.nav-list-item.active .nav-list-link {
+  color: #fcf958;
+}
+.nav-list-item.active .nav-list-link svg {
+  stroke: #fcf958;
+}
