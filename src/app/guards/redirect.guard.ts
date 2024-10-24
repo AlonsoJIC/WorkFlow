@@ -1,8 +1,8 @@
-/* import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CanActivate } from '@angular/router';
 
-import { TokenService } from '@services/token.service';
+import { TokenService } from '../services/token.service';
 
 @Injectable({
   providedIn: 'root'
@@ -22,4 +22,3 @@ export class RedirectGuard implements CanActivate {
     return true;
   }
 }
- */
