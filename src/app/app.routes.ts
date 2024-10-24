@@ -7,6 +7,12 @@ import { RegisterComponent } from './modules/auth/register/register.component';
 
 export const routes: Routes = [
     {
+      path: 'auth',
+      // canActivate: [AuthGuard],
+      loadChildren: async () =>
+        (await import('./modules/auth/auth-routing.module')).routes,
+    },
+    {
         path: 'home',
         component: HomeComponent
     },
@@ -18,17 +24,17 @@ export const routes: Routes = [
         path: 'not-found',
         component: HomeComponent
     },
-    {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path: 'register',
-        component: RegisterComponent
-    },
+    // {
+    //     path: 'login',
+    //     component: LoginComponent
+    // },
+    // {
+    //     path: 'register',
+    //     component: RegisterComponent
+    // },
     {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'auth',
         pathMatch: 'full'
     },
 
