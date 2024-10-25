@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { FormBuilder, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -6,15 +7,18 @@ import { faEye, faEyeSlash } from '@fortawesome/free-solid-svg-icons';
 import { CustomValidators } from '../../../models/validators';
 import { RequestStatus } from '../../../models/request-status.model';
 import { AuthService } from '../../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [FontAwesomeModule, ReactiveFormsModule, FormsModule],
+  imports: [FontAwesomeModule, ReactiveFormsModule, FormsModule, CommonModule],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
+  http = inject(HttpClient);
   formBuilder = inject(FormBuilder);
 
   formUser = this.formBuilder.nonNullable.group({
@@ -47,7 +51,7 @@ export class RegisterComponent {
       .subscribe({
         next: () => {
           this.status = 'success';
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/dashboard']);
         },
         error: (error) => {
           this.status = 'failed';
