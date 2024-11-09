@@ -1,20 +1,39 @@
 
-.subtitle:before{
+.subtitle:before {
 	content: ' ';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0);
-}
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background-color: rgba(0, 0, 0, 0);
+  }
+  .container {
+	
+	display: flex;
+	justify-content: center; /* Centra horizontalmente */
+	     /* Centra verticalmente */
+	height: 50vh; 
+	margin: 0 auto;  
+	padding: 20px;        /*  ajusta la altura  */
+
+	@media screen and (max-width: 600px) {
+		 height: 30vh; padding: 10px;
+		 
+		 .cubespinner div{ 
+		font-size: 40px; }
+		 }  
+  }
 
 .stage{
 	width: auto;
 	margin-top: 15px;
     height: 100px;
+	
   }
   .cubespinner{
+	display: flex;
+	justify-content: center;
 	-webkit-animation-name:spincube;
 	-webkit-animation-timing-function:ease-in-out;
 	-webkit-animation-iteration-count:infinite;
@@ -34,6 +53,7 @@
 	transform-origin:40px 40px  0;
   }
   .cubespinner div{
+	
 	  position:absolute;
 	  width:400px;
 	  height:80px;
@@ -42,7 +62,12 @@
 	  font-family:'Raleway', sans-serif;
 	  font-size:74px;
 	  font-weight:700;
-	  }
+
+	  @media screen and (max-width: 600px) {
+		 font-size: 40px; }
+		 
+		}
+	  
   .cubespinner .face1{
 	  color:#f1c40f;
 	  -webkit-transform:translateZ(40px);
@@ -147,4 +172,6 @@
       -ms-transform: rotateX(360deg);
       transform: rotateX(360deg);
     }
+
+	
   }
