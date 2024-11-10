@@ -4,19 +4,55 @@
   height: 1rem;
 }
 
-/*
- * Sidebar
- */
+/* Sidebar */
+.sidebar,
+#sidebarMenu {
+  border:1px #2724dc !important;
+  background-color: #212529 !important;
+  box-shadow: inset -1px 0 0 rgba(107, 106, 106, 0.356);
+}
 
+/* Ajustes en pantallas grandes */
 @media (min-width: 768px) {
   .sidebar .offcanvas-lg {
-      position: -webkit-sticky;
-      position: sticky;
-      top: 48px;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 48px;
   }
 
   .navbar-search {
-      display: block;
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  /* Sidebar oculta en dispositivos móviles */
+  .sidebar {
+    display: none;
+  }
+
+  /* Mostrar el botón para abrir la sidebar */
+  .sidebar-toggle {
+    display: block;
+    font-size: 1.5rem;
+    color: #fff;
+    padding: 0.5rem;
+  }
+
+  /* Estilos de la sidebar como menú deslizante */
+  #sidebarMenu {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    transition: left 0.3s ease;
+    z-index: 1040;
+  }
+
+  /* Clase para mostrar el menú */
+  .sidebar-open #sidebarMenu {
+    left: 0;
   }
 }
 
@@ -26,7 +62,7 @@
 }
 
 .sidebar .nav-link.active {
-  color: #2470dc;
+  color: #000000;
 }
 
 .sidebar-heading {
@@ -38,15 +74,13 @@
   height: auto;
 }
 
-/*
- * Navbar
- */
-
+/* Navbar */
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
   background-color: rgba(0, 0, 0, .25);
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
+  color: #cccaca !important;
 }
 
 .navbar .form-control {
@@ -63,7 +97,7 @@
 
 @media (min-width: 768px) {
   .bd-placeholder-img-lg {
-      font-size: 3.5rem;
+    font-size: 3.5rem;
   }
 }
 
