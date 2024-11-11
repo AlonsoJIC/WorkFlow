@@ -1,14 +1,14 @@
 .bi {
   display: inline-block;
-  width: 1rem;
-  height: 1rem;
+  width: 0.75rem;
+  height: 0.5rem;
 }
 
 /* Sidebar */
 .sidebar,
 #sidebarMenu {
-  border:1px #2724dc !important;
-  background-color: #212529 !important;
+  border:1px #ffffff !important;
+  background-color: #131518 !important;
   box-shadow: inset -1px 0 0 rgba(107, 106, 106, 0.356);
 }
 
@@ -62,7 +62,7 @@
 }
 
 .sidebar .nav-link.active {
-  color: #000000;
+  color: #b3aa31;
 }
 
 .sidebar-heading {
@@ -78,9 +78,9 @@
 .navbar-brand {
   padding-top: .75rem;
   padding-bottom: .75rem;
-  background-color: rgba(0, 0, 0, .25);
+  background-color: #131518;
   box-shadow: inset -1px 0 0 rgba(0, 0, 0, .25);
-  color: #cccaca !important;
+  color: #ffffff !important;
 }
 
 .navbar .form-control {
