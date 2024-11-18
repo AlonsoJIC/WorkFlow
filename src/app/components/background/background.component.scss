@@ -1,0 +1,28 @@
+.background{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #0e0b1d;
+  overflow: hidden;
+  z-index: -1;
+}
+
+#bg-wrap{
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+
+.gradient-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+      radial-gradient(circle at 20% 50%, rgba(16, 4, 31, 0.26) 0%, transparent 50%),
+      radial-gradient(circle at 80% 30%, rgba(115, 70, 255, 0.08) 0%, transparent 50%);
+}

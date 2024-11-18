@@ -3,13 +3,14 @@ import { Router, RouterOutlet, NavigationEnd } from '@angular/router';
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NgIf } from '@angular/common';
+import { BackgroundComponent } from "./components/background/background.component";
 
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FooterComponent, NgIf],
+  imports: [RouterOutlet, NavbarComponent, FooterComponent, NgIf, BackgroundComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
