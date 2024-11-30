@@ -1,13 +1,19 @@
 <div class="container mt-5">
   <div class="row">
 
-    <div class="column col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="column pt-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <h1>A simple app to manage it all!</h1>
       <p>Easily manage your personal tasks, family projects, and team’s work all in one place.</p>
     </div>
 
-    <div class="column mt-1 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+    <div class="column mt-1 pb-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <app-text-animation></app-text-animation>
+      <div class="wrap">
+        <button class="button1" [routerLink]="['/login']" routerLinkActive="router-link-active" >Sign in</button>
+      </div>
+      <div class="wrap">
+        <button class="button2" [routerLink]="['/register']" routerLinkActive="router-link-active" >Sign up</button>
+      </div>
     </div>
 
   </div>

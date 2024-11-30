@@ -1,5 +1,5 @@
 <!-- FORM DE REGISTER -->
-<div class="container">
+<div class="container mt-5 mb-5">
   <form class="register-form">
     <div class="form-group" *ngIf="!showRegister">
       <form
@@ -21,10 +21,16 @@
             formUser.controls.email.touched && formUser.controls.email.invalid
           "
         >
-          <p *ngIf="formUser.controls.email.hasError('required')" class="mandatory">
+          <p
+            *ngIf="formUser.controls.email.hasError('required')"
+            class="mandatory"
+          >
             This field is mandatory
           </p>
-          <p *ngIf="formUser.controls.email.hasError('email')" class="mandatory">
+          <p
+            *ngIf="formUser.controls.email.hasError('email')"
+            class="mandatory"
+          >
             This field should be a email
           </p>
         </div>
@@ -34,122 +40,139 @@
   </form>
 
   <div class="register-right form-group">
-    <div class="card">
-      <div class="card-register form-group" *ngIf="showRegister">
-        <h1 class="">Enter your data</h1>
-        <form
-          [formGroup]="form"
-          novalidate
-          class="space-y-4"
-          (ngSubmit)="register()"
-        >
-          <div>
-            <div class="relative">
-              <input
-                formControlName="name"
-                placeholder="Your name"
-                type="email"
-                name="name"
-                class=""
-              />
-            </div>
-            <div
-              *ngIf="form.controls.name.touched && form.controls.name.invalid"
-            >
-              <p *ngIf="form.controls.name.hasError('required')" class="mandatory">
-                This field is mandatory
-              </p>
-            </div>
+    <div class="card-register form-group" *ngIf="showRegister">
+      <h1 class="">Enter your data</h1>
+      <form
+        [formGroup]="form"
+        novalidate
+        class="space-y-4"
+        (ngSubmit)="register()"
+      >
+        <div>
+          <div class="relative">
+            <input
+              formControlName="name"
+              placeholder="Your name"
+              type="email"
+              name="name"
+              class=""
+            />
           </div>
-          <div>
-            <div class="relative">
-              <input
-                #nameInput
-                formControlName="email"
-                placeholder="Email"
-                type="email"
-                name="email"
-                autocomplete="off"
-                class=""
-              />
-            </div>
-            <div
-              *ngIf="form.controls.email.touched && form.controls.email.invalid"
+          <div *ngIf="form.controls.name.touched && form.controls.name.invalid">
+            <p
+              *ngIf="form.controls.name.hasError('required')"
+              class="mandatory"
             >
-              <p *ngIf="form.controls.email.hasError('required')" class="mandatory">
-                This field is mandatory
-              </p>
-              <p *ngIf="form.controls.email.hasError('email')" class="mandatory">
-                This field should be a email
-              </p>
-            </div>
-          </div>
-          <div>
-            <div class="relative">
-              <input
-                formControlName="password"
-                placeholder="Your password"
-                [type]="showPassword ? 'text' : 'password'"
-                class=""
-              />
-              <button
-                type="button"
-                class=""
-                (click)="showPassword = !showPassword"
-              >
-                <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
-              </button>
-            </div>
-            <div
-              *ngIf="
-                form.controls.password.touched && form.controls.password.invalid
-              "
-            >
-              <p *ngIf="form.controls.password.hasError('minlength')" class="mandatory">
-                This field should be greater than 6 characters
-              </p>
-              <p *ngIf="form.controls.password.hasError('maxlength')" class="mandatory">
-                This field should be lesser than 18 characters
-              </p>
-            </div>
-          </div>
-          <div>
-            <div class="relative">
-              <input
-                formControlName="confirmPassword"
-                placeholder="Confirm password"
-                type="password"
-                class=""
-              />
-            </div>
-            <div
-              *ngIf="
-                form.controls.confirmPassword.touched &&
-                form.controls.confirmPassword.invalid
-              "
-            >
-              <p
-                *ngIf="form.controls.confirmPassword.hasError('required')"
-                class="mandatory"
-              >
-                This field is mandatory
-              </p>
-              <p
-                *ngIf="form.controls.confirmPassword.hasError('minlength')"
-                class="mandatory"
-              >
-                This field should be greater than 6 characters
-              </p>
-            </div>
-          </div>
-          <div *ngIf="form.controls.confirmPassword.touched">
-            <p *ngIf="form.hasError('mismatch')" class="mandatory">
-              The password are not the same
+              This field is mandatory
             </p>
           </div>
-          <button typeBtn="submit" [disabled]="status === 'loading'">Register</button>
-        </form>
-      </div>
+        </div>
+        <div>
+          <div class="relative">
+            <input
+              #nameInput
+              formControlName="email"
+              placeholder="Email"
+              type="email"
+              name="email"
+              autocomplete="off"
+              class=""
+            />
+          </div>
+          <div
+            *ngIf="form.controls.email.touched && form.controls.email.invalid"
+          >
+            <p
+              *ngIf="form.controls.email.hasError('required')"
+              class="mandatory"
+            >
+              This field is mandatory
+            </p>
+            <p *ngIf="form.controls.email.hasError('email')" class="mandatory">
+              This field should be a email
+            </p>
+          </div>
+        </div>
+        <div>
+          <div style="display: flex; align-items: center">
+            <input
+              formControlName="password"
+              placeholder="Your password"
+              [type]="showPassword ? 'text' : 'password'"
+              style="flex: 1"
+            />
+            <button
+              type="button"
+              (click)="showPassword = !showPassword"
+              style="margin-left: 8px"
+            >
+              <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+            </button>
+          </div>
+
+          <div
+            *ngIf="
+              form.controls.password.touched && form.controls.password.invalid
+            "
+          >
+            <p
+              *ngIf="form.controls.password.hasError('minlength')"
+              class="mandatory"
+            >
+              This field should be greater than 6 characters
+            </p>
+            <p
+              *ngIf="form.controls.password.hasError('maxlength')"
+              class="mandatory"
+            >
+              This field should be lesser than 18 characters
+            </p>
+          </div>
+        </div>
+        <div>
+          <div class="relative">
+            <input
+              formControlName="confirmPassword"
+              placeholder="Confirm password"
+              type="password"
+              class=""
+            />
+          </div>
+          <div
+            *ngIf="
+              form.controls.confirmPassword.touched &&
+              form.controls.confirmPassword.invalid
+            "
+          >
+            <p
+              *ngIf="form.controls.confirmPassword.hasError('required')"
+              class="mandatory"
+            >
+              This field is mandatory
+            </p>
+            <p
+              *ngIf="form.controls.confirmPassword.hasError('minlength')"
+              class="mandatory"
+            >
+              This field should be greater than 6 characters
+            </p>
+          </div>
+        </div>
+        <div *ngIf="form.controls.confirmPassword.touched">
+          <p *ngIf="form.hasError('mismatch')" class="mandatory">
+            The password are not the same
+          </p>
+        </div>
+        <div class="d-flex justify-content-center">
+          <button
+            type="submit"
+            [disabled]="status === 'loading'"
+            class="btn btn-primary"
+          >
+            Register
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>

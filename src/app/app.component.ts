@@ -25,7 +25,7 @@ export class AppComponent implements OnInit{
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         // Aquí puedes configurar las rutas donde quieres ocultar el navbar y footer
-        const hiddenRoutes = ['/login', '/register', '/dashboard'];
+        const hiddenRoutes = [/* '/login', '/register', */ '/dashboard'];
         this.showNavbarFooter = !hiddenRoutes.includes(event.urlAfterRedirects);
       }
     });

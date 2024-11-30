@@ -1,0 +1,50 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h3">Guardar tipo de identificación</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+          <a class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1" routerLink="/catalogos/tipos-identificacion">
+              <i class="bi bi-backspace"></i>
+              Regresar
+          </a>
+      </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+      Complete todos los campos requeridos
+  </div>
+  <div class="card-body">
+      <form [formGroup]="formulario" (ngSubmit)="Guardar()">
+          <div class="mb-3">
+              <label class="form-label" for="nombre">Nombre: <span class="text-danger">*</span></label>
+              <input type="text" name="nombre" id="nombre" placeholder="Ingrese el nombre..." formControlName="nombre" class="form-control mb-2">
+              @if (nombre.errors && (nombre.dirty || nombre.touched)) {
+                  <span class="text-danger mb-2">El nombre es requerido.</span>
+              }
+          </div>
+
+          <div class="mb-3">
+              <label class="form-label" for="mascara">Máscara: <span class="text-danger">*</span></label>
+              <input type="text" name="mascara" id="mascara" placeholder="Ingrese la máscara..." formControlName="mascara" class="form-control mb-2">
+              @if (mascara.errors && (mascara.dirty || mascara.touched)) {
+                  <span class="text-danger mb-2">La máscara es requerida.</span>
+              }
+          </div>
+
+          <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+              <button class="btn btn-outline-primary me-md-2" type="submit" [disabled]="!formulario.valid">
+                  @if (cargando) {
+                      <i class="bi bi-hourglass-split"></i> Guardando...
+                  } @else {
+                      <i class="bi bi-plus-circle"></i> Guardar
+                  }
+              </button>
+              <button class="btn btn-outline-secondary" type="reset">
+                  <i class="bi bi-x-circle"></i>
+                  Limpiar
+              </button>
+          </div>
+      </form>
+  </div>
+</div>

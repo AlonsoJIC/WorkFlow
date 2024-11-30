@@ -1,0 +1,83 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h3">Cursos</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+          <a class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1" routerLink="/cursos/guardar">
+              <i class="bi bi-plus-circle"></i>
+              Nuevo
+          </a>
+      </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+      <div class="input-group">
+          <input type="search" class="form-control" placeholder="Ingrese el curso a buscar..." #inputBusqueda (keyup)="filtrar(inputBusqueda.value)">
+          <span class="input-group-text">
+              <i class="bi bi-search"></i>
+          </span>
+      </div>
+      <div class="mat-elevation-z1 mt-3">
+          @defer {
+              <table mat-table [dataSource]="origen" matSort>
+                  <ng-container matColumnDef="idCurso">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header># Curso</th>
+                      <td mat-cell *matCellDef="let curso">{{curso.idCurso}}</td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="codigo">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+                      <td mat-cell *matCellDef="let curso">{{curso.codigo}}</td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="nombre">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                      <td mat-cell *matCellDef="let curso">{{curso.nombre}}</td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="descripcion">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
+                      <td mat-cell *matCellDef="let curso">{{curso.descripcion}}</td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="estado">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+                      <td mat-cell *matCellDef="let curso">
+                          @if (curso.estado) {
+                              <span class="text-success">Activo</span>
+                          } @else {
+                              <span class="text-danger">Inactivo</span>
+                          }
+                      </td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="opciones">
+                      <th mat-header-cell *matHeaderCellDef>Opciones</th>
+                      <td mat-cell *matCellDef="let curso">
+                          <div class="btn-group" role="group">
+                              <a title="Editar curso" class="btn btn-sm btn-outline-secondary" [routerLink]="['/cursos/actualizar/', curso.idCurso]">
+                                  <i class="bi bi-pencil-square"></i>
+                              </a>
+                              @if (curso.estado) {
+                                  <button (click)="estado(curso.idCurso, false)" type="button" class="btn btn-sm btn-outline-danger" title="Inactivar curso">
+                                      <i class="bi bi-x-square"></i>
+                                  </button>
+                              } @else { 
+                                  <button (click)="estado(curso.idCurso, true)" type="button" class="btn btn-sm btn-outline-success" title="Activar curso">
+                                      <i class="bi bi-check-square"></i>
+                                  </button>
+                              }
+                          </div>
+                      </td>
+                  </ng-container>
+  
+                  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                  <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+              </table>
+          } @loading {
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          }
+      </div>
+  </div>
+</div>

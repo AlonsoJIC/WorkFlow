@@ -1,0 +1,58 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h3">Tipos de Identificación</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+          <a class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1" routerLink="/catalogos/tipos-identificacion/guardar">
+              <i class="bi bi-plus-circle"></i>
+              Nuevo
+          </a>
+      </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+      <div class="input-group">
+          <input type="search" class="form-control" placeholder="Ingrese el tipo de identificación a buscar..." #inputBusqueda (keyup)="filtrar(inputBusqueda.value)">
+          <span class="input-group-text">
+              <i class="bi bi-search"></i>
+          </span>
+      </div>
+      <div class="mat-elevation-z1 mt-3">
+          @defer {
+              <table mat-table [dataSource]="origen" matSort>
+                  <ng-container matColumnDef="idTipoIdentificacion">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header># Tipo</th>
+                      <td mat-cell *matCellDef="let tipo">{{tipo.idTipoIdentificacion}}</td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="nombre">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+                      <td mat-cell *matCellDef="let tipo">{{tipo.nombre}}</td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="mascara">
+                      <th mat-header-cell *matHeaderCellDef mat-sort-header>Máscara</th>
+                      <td mat-cell *matCellDef="let tipo">{{tipo.mascara}}</td>
+                  </ng-container>
+  
+                  <ng-container matColumnDef="opciones">
+                      <th mat-header-cell *matHeaderCellDef>Opciones</th>
+                      <td mat-cell *matCellDef="let tipo">
+                          <div class="btn-group" role="group">
+                              <a title="Editar tipo" class="btn btn-sm btn-outline-secondary" [routerLink]="['/catalogos/tipos-identificacion/actualizar/', tipo.idTipoIdentificacion]">
+                                  <i class="bi bi-pencil-square"></i>
+                              </a>
+                          </div>
+                      </td>
+                  </ng-container>
+  
+                  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+                  <tr mat-row *matRowDef="let row; columns: columnas;"></tr>
+              </table>
+          } @loading { 
+              <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+          }
+      </div>
+  </div>
+</div>
