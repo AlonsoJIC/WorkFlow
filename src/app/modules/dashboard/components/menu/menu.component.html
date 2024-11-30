@@ -1,47 +1,44 @@
-<div class="offcanvas-header">    
+<div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="sidebarMenuLabel">MTR - Matrículas</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#sidebarMenu"
         aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
+</div>
+<div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
     <ul class="nav flex-column">
-        
         <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" routerLinkActive="active" routerLink="/inicio">
+            <a class="nav-link d-flex align-items-center gap-2" routerLinkActive="active" routerLink="inicio">
                 <i class="bi bi-ui-checks-grid text-success"></i>
-                Add employee
+                Inicio
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" routerLink="/productos">
                 <i class="bi bi-box-seam text-success"></i>
-                Add work order
+                Matrículas
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" routerLink="/marcas">
+            <a class="nav-link d-flex align-items-center gap-2" routerLink="/dashboard/cursos">
                 <i class="bi bi-boxes text-success"></i>
-                Add task
+                Cursos
             </a>
         </li>
-
-        <hr class="my-3">
-
         <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" routerLink="/clientes">
                 <i class="bi bi-people text-success"></i>
-                List of employees
+                Profesores
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" routerLink="/ventas">
+            <a class="nav-link d-flex align-items-center gap-2" routerLink="/dashboard/estudiantes">
                 <i class="bi bi-person-rolodex text-success"></i>
-                Work order list
+                Estudiantes
             </a>
         </li>
         <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" routerLink="/proveedores">
                 <i class="bi bi-folder2-open text-success"></i>
-                Task list
+                Ofertas
             </a>
         </li>
     </ul>
@@ -50,15 +47,15 @@
 
     <ul class="nav flex-column mb-auto">
         <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" routerLink="/catalogos/tipos-identificacion">
-                <i class="bi bi-view-list text-warning"></i>
-                Assign task to order
+            <a class="nav-link d-flex align-items-center gap-2" routerLink="/dashboard/catalogos/tipos-identificacion">
+                <i class="bi bi-folder2 text-secondary"></i>
+                Tipos de Identificación
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" routerLink="/catalogos/tipos-usuario">
-                <i class="bi bi-view-list text-warning"></i>
-                Manage order status
+            <a class="nav-link d-flex align-items-center gap-2" routerLink="/dashboard/catalogos/tipos-usuario">
+                <i class="bi bi-folder2 text-secondary"></i>
+                Tipos de Usuario
             </a>
         </li>
     </ul>
@@ -69,22 +66,8 @@
         <li class="nav-item">
             <a class="nav-link d-flex align-items-center gap-2" href="#">
                 <i class="bi bi-box-arrow-in-left text-danger"></i>
-                Sign out
+                Cerrar sesión
             </a>
         </li>
     </ul>
-    <ul class="nav flex-column mb-auto">
-        <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-box-arrow-in-left text-danger"></i>
-            </a>
-        </li>
-    </ul>
-    <ul class="nav flex-column mb-auto">
-        <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-box-arrow-in-left text-danger"></i>
-            </a>
-        </li>
-    </ul>
-    </div>
+</div>

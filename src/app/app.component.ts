@@ -4,6 +4,8 @@ import { NavbarComponent } from "./components/navbar/navbar.component";
 import { FooterComponent } from "./components/footer/footer.component";
 import { NgIf } from '@angular/common';
 import { BackgroundComponent } from "./components/background/background.component";
+import { AuthService } from './services/auth.service';
+import { TokenService } from './services/token.service';
 
 
 
@@ -18,15 +20,18 @@ export class AppComponent implements OnInit{
   title = 'WorkFlow';
 
   showNavbarFooter: boolean = true;
+  isAuth: boolean = true;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private tokenService: TokenService) {
+
+
+  }
 
   ngOnInit() {
+    const hiddenKeywords = ['dashboard', 'curso', 'catalogo', 'estudiantes', 'profesionales'];
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
-        // Aquí puedes configurar las rutas donde quieres ocultar el navbar y footer
-        const hiddenRoutes = [/* '/login', '/register', */ '/dashboard'];
-        this.showNavbarFooter = !hiddenRoutes.includes(event.urlAfterRedirects);
+        this.showNavbarFooter = !hiddenKeywords.some(keyword => event.urlAfterRedirects.includes(keyword));
       }
     });
   }
