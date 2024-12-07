@@ -8,13 +8,19 @@
 
     <div class="column mt-1 pb-5 col-lg-12 col-md-12 col-sm-12 col-xs-12">
       <app-text-animation></app-text-animation>
-      <div class="wrap">
-        <button class="button1" [routerLink]="['/login']" routerLinkActive="router-link-active" >Sign in</button>
+      <div class="wrap" *ngIf="!isAuthenticated">
+        <button class="button1" [routerLink]="['/register']" routerLinkActive="router-link-active" >
+          Sign Up
+        </button>
+      </div>
+      <div class="wrap" *ngIf="isAuthenticated">
+        <button class="button1" [routerLink]="['/dashboard']" routerLinkActive="router-link-active" >
+          Dashboard
+        </button>
       </div>
       <div class="wrap">
-        <button class="button2" [routerLink]="['/register']" routerLinkActive="router-link-active" >Sign up</button>
+        <button class="button2" [routerLink]="['/about-us']" routerLinkActive="router-link-active" >About us</button>
       </div>
     </div>
-
   </div>
 </div>

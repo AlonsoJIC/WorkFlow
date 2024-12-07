@@ -28,25 +28,18 @@
           routerLinkActive="active"
           class="nav-link"
           aria-current="page"
-          routerLink="/dashboard"
+          routerLink="/about-us"
         >
-          Dashboard
+          About us
         </a>
-        <a
-          routerLinkActive="active"
-          class="nav-link"
-          aria-current="page"
-          routerLink="login"
-        >
+        <a *ngIf="!isAuthenticated" routerLinkActive="active" class="nav-link" routerLink="login">
           Sign In
         </a>
-        <a
-          routerLinkActive="active"
-          class="nav-link"
-          aria-current="page"
-          routerLink="register"
-        >
+        <a *ngIf="!isAuthenticated" routerLinkActive="active" class="nav-link" routerLink="register">
           Sign Up
+        </a>
+        <a *ngIf="isAuthenticated" routerLinkActive="active" class="nav-link" routerLink="dashboard">
+          Dashboard
         </a>
       </div>
     </div>

@@ -6,6 +6,9 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { RegisterComponent } from './register/register.component';
 import { RecoveryComponent } from './recovery/recovery.component';
 import { AuthComponent } from './auth.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+
 
 export const routes: Routes = [
   {
@@ -35,7 +38,10 @@ export const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)],
+    RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    CommonModule,
+  ],
   exports: [RouterModule],
 })
 export class AuthRoutingModule {}

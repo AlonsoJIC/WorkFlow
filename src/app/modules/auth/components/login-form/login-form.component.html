@@ -1,0 +1,70 @@
+<section>
+  <form [formGroup]="form" novalidate class="" (ngSubmit)="doLogin()">
+    <h1 class="">Log in to Workflow</h1>
+
+    <!-- EMAIL -->
+    <div class="inputbox">
+      <div class="relative">
+        <p for="">Email</p>
+        <input #nameInput formControlName="email" placeholder="Enter email" type="email" class="" />
+      </div>
+
+      <div *ngIf="form.controls.email.touched && form.controls.email.invalid">
+        <p *ngIf="form.controls.email.hasError('required')" class="mandatory">
+          This field is mandatory
+        </p>
+        <p *ngIf="form.controls.email.hasError('email')" class="mandatory">
+          This field should be a email
+        </p>
+      </div>
+    </div>
+
+    <!-- PASSWORD -->
+    <div class="inputbox">
+      <div class="relative">
+        <p for="">Password</p>
+        <input formControlName="password" placeholder="Enter password" [type]="showPassword ? 'text' : 'password'"
+          class="" />
+<!--         <button type="button" class="" (click)="showPassword = !showPassword">
+          <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
+        </button> -->
+
+      </div>
+      <div *ngIf="form.controls.password.touched && form.controls.password.invalid">
+        <p *ngIf="form.controls.password.hasError('required')" class="mandatory">
+          This field is mandatory
+        </p>
+        <p *ngIf="form.controls.password.hasError('minlength')" class="mandatory">
+          This field should be greater than 8 characters
+        </p>
+        <p *ngIf="form.controls.password.hasError('maxlength')" class="mandatory">
+          This field should be lesser than 18 characters
+        </p>
+      </div>
+    </div>
+
+    <!-- FORGET PASSWORD / REMENBER ME BUTTON -->
+    <div class="forget">
+      <label for=""><input type="checkbox">Remember Me</label>
+      <a href="forgot-password" class="forgetPass" >Forget Password</a>
+    </div>
+
+    <!-- CREDENTIAL ARE INVALID -->
+    <div *ngIf="status === 'failed'">
+      <p class="">Credentials are invalid</p>
+    </div>
+
+    <!-- REGISTER BUTTON -->
+    <div class="register">
+      <p>Don't have a account <a href="#">Register</a></p>
+    </div>
+
+    <!-- LOGIN BUTTON -->
+<!-- LOGIN BUTTON -->
+<button type="submit" [disabled]="form.invalid || status === 'loading'" class="login-button">
+  <span *ngIf="status !== 'loading'">Login</span>
+  <span *ngIf="status === 'loading'">Loading...</span>
+</button>
+
+  </form>
+</section>

@@ -3,6 +3,7 @@ import { HomeComponent } from './modules/home/home/home.component';
 import { NotFoundComponent } from './modules/home/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { RedirectGuard } from './guards/redirect.guard';
+import { AboutUsComponent } from './modules/home/about-us/about-us.component';
 
 export const routes: Routes = [
     {
@@ -23,6 +24,10 @@ export const routes: Routes = [
     {
         path: 'home',
         component: HomeComponent
+    },
+    {
+        path: 'about-us',
+        component: AboutUsComponent
     },
     {
         path: 'not-found',

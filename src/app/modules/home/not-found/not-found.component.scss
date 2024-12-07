@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa|Gamja+Flower');
+
+
+
+p{
+  margin-top: 50px;
+  font-family: 'Comfortaa', cursive;
+  font-size:30px;
+  color: white;
+  text-align:center;
+}
+a{
+  color:rgb(0, 174, 255);
+  text-decoration:none;
+}
+.not-found{
+  background-color:rgba(255, 255, 255, 0);
+  color:white;
+  padding:15px;
+  padding-left:30px;
+  padding-right:30px;
+}
+.tipsiz{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  margin:10px;
+  flex-direction:column;
+}
+.tipsiz-body{
+  display:flex;
+  align-items:center;
+  margin:10px;
+}
+.arm{
+  align-self:flex-end;
+  width: 50px;
+	height: 90px;
+  border-top:3px solid rgb(255, 255, 255);
+  
+}
+.left-arm{
+  border-right:3px solid rgb(255, 255, 255);
+  transform: skew(20deg);
+}
+.right-arm{
+  border-left:3px solid rgb(255, 255, 255);
+  transform: skew(-20deg);
+}
+
+.face{
+  width:300px;
+  height:200px;
+  border:3px solid rgb(255, 255, 255);
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction: column;
+  margin-left:20px;
+  margin-right:20px;
+  border-radius:15px;
+}
+.upper-face{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  letter-spacing:80px;
+  margin-left:80px;
+}
+.element{
+  font-size:60px;
+  color: white;
+  padding-bottom: 30px;
+}
+.mouth{
+  width:20px;
+  height:10px;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  border: 3px solid rgb(255, 255, 255);
+  border-bottom: 0;
+}
+
+

@@ -18,12 +18,12 @@ import { TokenService } from './services/token.service';
 })
 export class AppComponent implements OnInit{
   title = 'WorkFlow';
+  isAuthenticated = false;
 
   showNavbarFooter: boolean = true;
   isAuth: boolean = true;
 
   constructor(private router: Router, private tokenService: TokenService) {
-
 
   }
 
@@ -34,5 +34,8 @@ export class AppComponent implements OnInit{
         this.showNavbarFooter = !hiddenKeywords.some(keyword => event.urlAfterRedirects.includes(keyword));
       }
     });
+
+    this.isAuthenticated = this.tokenService.isValidToken();
+    console.log('Usuario autenticado:', this.isAuthenticated);
   }
 }

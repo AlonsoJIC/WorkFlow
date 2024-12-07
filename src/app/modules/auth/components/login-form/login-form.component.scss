@@ -5,14 +5,28 @@
 }
 
 section {
-	border: 2px solid rgba(255, 255, 255, 0.397);
-	border-radius: 30px;
-	backdrop-filter: blur(15px);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 2rem 3rem;
+  border: 2px solid rgba(255, 255, 255, 0.397);
+  border-radius: 30px;
+  background-color: #0000006e;
+  backdrop-filter: blur(25px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 2rem;
+  max-width: 1200px;
+  padding-left: 90px;
+  padding-right: 90px;
+  width: 100%;
+  margin: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Opcional */
+	animation: fadeInUp 0.8s ease-out;
 }
+
+.mandatory{
+  color: #f84141;
+  text-align: center;
+}
+
 h1 {
 	font-size: 2rem;
 	color: var(--white);
@@ -56,6 +70,9 @@ input {
 	color: var(--white);
 	display: flex;
 	justify-content: space-between;
+	.forgetPass{
+		color: rgb(22, 150, 255);
+	}
 	label {
 		display: flex;
 		align-items: center;
@@ -90,8 +107,19 @@ input {
 	}
 }
 
+
 p {
   color: var(--white);
   font-size: 1rem;
   pointer-events: none;
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 40px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
