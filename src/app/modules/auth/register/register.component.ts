@@ -38,8 +38,7 @@ export class RegisterComponent {
   faEye = faEye; faEyeSlash = faEyeSlash; showPassword = false; showRegister = false;
 
   constructor(
-/*     private formBuilder: FormBuilder,
- */    private router: Router,
+    private router: Router,
     private authService: AuthService
   ) {}
 

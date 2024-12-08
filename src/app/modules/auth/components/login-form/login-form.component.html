@@ -56,15 +56,18 @@
 
     <!-- REGISTER BUTTON -->
     <div class="register">
-      <p>Don't have a account <a href="#">Register</a></p>
+      <p>Don't have an account? <a href="/register">Register</a></p>
     </div>
+    
 
     <!-- LOGIN BUTTON -->
-<!-- LOGIN BUTTON -->
-<button type="submit" [disabled]="form.invalid || status === 'loading'" class="login-button">
-  <span *ngIf="status !== 'loading'">Login</span>
-  <span *ngIf="status === 'loading'">Loading...</span>
-</button>
+    <div class="d-flex justify-content-center">
+      <button type="submit" [disabled]="form.invalid || status === 'loading'" class="login-button">
+        <span *ngIf="status !== 'loading'">Login</span>
+        <span *ngIf="status === 'loading'">Loading...</span>
+      </button>
+    </div>
+
 
   </form>
 </section>

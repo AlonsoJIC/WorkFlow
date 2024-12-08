@@ -41,7 +41,7 @@
 
   <div class="register-right form-group">
     <div class="card-register form-group" *ngIf="showRegister">
-      <h1 class="">Enter your data</h1>
+      <h1 class="titleData">Enter your data</h1>
       <form
         [formGroup]="form"
         novalidate
@@ -101,13 +101,6 @@
               [type]="showPassword ? 'text' : 'password'"
               style="flex: 1"
             />
-            <button
-              type="button"
-              (click)="showPassword = !showPassword"
-              style="margin-left: 8px"
-            >
-              <fa-icon [icon]="showPassword ? faEye : faEyeSlash"></fa-icon>
-            </button>
           </div>
 
           <div
@@ -119,7 +112,7 @@
               *ngIf="form.controls.password.hasError('minlength')"
               class="mandatory"
             >
-              This field should be greater than 6 characters
+              This field should be greater than 8 characters
             </p>
             <p
               *ngIf="form.controls.password.hasError('maxlength')"
@@ -154,7 +147,7 @@
               *ngIf="form.controls.confirmPassword.hasError('minlength')"
               class="mandatory"
             >
-              This field should be greater than 6 characters
+              This field should be greater than 8 characters
             </p>
           </div>
         </div>

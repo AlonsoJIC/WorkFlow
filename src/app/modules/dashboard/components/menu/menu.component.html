@@ -64,9 +64,13 @@
 
     <ul class="nav flex-column mb-auto">
         <li class="nav-item">
-            <a class="nav-link d-flex align-items-center gap-2" href="#">
-                <i class="bi bi-box-arrow-in-left text-danger"></i>
-                Cerrar sesión
+            <a
+            class="logout nav-link d-flex align-items-center gap-2"
+            href="/home"
+            (click)="logout()"
+            >
+            <i class="bi bi-box-arrow-in-left text-danger"></i>
+            Cerrar sesión
             </a>
         </li>
     </ul>

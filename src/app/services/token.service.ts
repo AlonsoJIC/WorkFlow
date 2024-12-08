@@ -64,4 +64,10 @@ export class TokenService {
     }
     return false;
   }
+
+  // Método de cierre de sesión
+  logout() {
+    this.removeToken();
+    this.removeRefreshToken();
+  }
 }
