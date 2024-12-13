@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { TipoIdentificacionService } from '../../../../../services/tipo-identificacion.service';
+import { TipoIdentificacionService } from '../../../../../services/tipoIdentificacion.service';
 import { TipoIdentificacion } from '../../../../../models/tipoIdentificacion';
 import Swal from 'sweetalert2';
 

@@ -4,7 +4,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 import { MatSort, MatSortModule } from '@angular/material/sort';
 import { RouterModule } from '@angular/router';
 import { TipoIdentificacion } from '../../../../../models/tipoIdentificacion';
-import { TipoIdentificacionService } from '../../../../../services/tipo-identificacion.service';
+import { TipoIdentificacionService } from '../../../../../services/tipoIdentificacion.service';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @Component({

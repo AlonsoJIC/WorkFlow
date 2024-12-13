@@ -3,7 +3,7 @@ import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angula
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
 import { TipoIdentificacion } from '../../../../../models/tipoIdentificacion';
-import { TipoIdentificacionService } from '../../../../../services/tipo-identificacion.service';
+import { TipoIdentificacionService } from '../../../../../services/tipoIdentificacion.service';
 
 @Component({
   selector: 'app-actualizar-tipo-identificacion',

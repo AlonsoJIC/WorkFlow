@@ -1,0 +1,155 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+  <h1 class="h3">Guardar oferta</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+          <a class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1" routerLink="/ofertas">
+              <i class="bi bi-backspace"></i>
+              Regresar
+          </a>
+      </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header">
+      Complete todos los campos requeridos
+  </div>
+  <div class="card-body">
+      @defer {
+          <form [formGroup]="formulario" (ngSubmit)="Guardar()">
+              <div class="row">
+                  <div class="col-md-12">
+                      <div class="mb-3">
+                          <label class="form-label" for="codigo">Código: <span class="text-danger">*</span></label>
+                          <input type="text" name="codigo" id="codigo" placeholder="Ingrese el código..." formControlName="codigo"
+                              class="form-control mb-2">
+                          @if (codigo.errors && (codigo.dirty || codigo.touched)) {
+                              <span class="text-danger mb-2">El código es requerido.</span>
+                          }
+                      </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                          <label class="form-label" for="fechaInicio">Fecha Inicia: <span class="text-danger">*</span></label>
+                          <div class="input-group">
+                              <input type="text" name="fechaInicio" [matDatepicker]="picker" formControlName="fechaInicio" class="form-control mb-2" placeholder="MM/DD/YYYY">
+                              <span class="input-group-text">
+                                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                              </span>
+                          </div>
+                          <mat-datepicker #picker></mat-datepicker>
+                          @if (fechaInicio.errors && (fechaInicio.dirty || fechaInicio.touched)) {
+                              <span class="text-danger mb-2">La fecha de inicio es requerida.</span>
+                          }
+                      </div>
+                  </div>
+
+                  <div class="col-md-6">
+                      <div class="mb-3">
+                          <label class="form-label" for="fechaFin">Fecha Fin: <span class="text-danger">*</span></label>
+                          <div class="input-group">
+                              <input type="text" name="fechaFin" [matDatepicker]="pickerFin" formControlName="fechaFin" class="form-control mb-2" placeholder="MM/DD/YYYY">
+                              <span class="input-group-text">
+                                  <mat-datepicker-toggle matIconSuffix [for]="pickerFin"></mat-datepicker-toggle>
+                              </span>
+                          </div>
+                          <mat-datepicker #pickerFin></mat-datepicker>
+                          @if (fechaInicio.errors && (fechaInicio.dirty || fechaInicio.touched)) {
+                              <span class="text-danger mb-2">La fecha de fin es requerida.</span>
+                          }
+                      </div>
+                  </div>
+              </div>
+
+              <span class="mt-3">Cursos disponibles: </span><span class="text-danger">*</span>
+
+              <div class="mt-3 table-responsive">
+                  <table class="table table-bordered">
+                      <thead class="text-center">
+                          <tr>
+                              <th>
+                                  <button type="button" class="btn btn-sm btn-outline-primary" (click)="AgregarLinea()">
+                                      <i class="bi bi-plus-square"></i>
+                                  </button>
+                              </th>
+                              <th>Profesional</th>
+                              <th>Curso</th>
+                              <th>Hora Inicio</th>
+                              <th>Hora Fin</th>
+                              <th>Cupo Max</th>
+                              <th>Cupo Min</th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                          @if (arrLineas.length == 0) {
+                              <tr>
+                                  <td colspan="7" class="text-center">Sin cursos asignados.</td>
+                              </tr>
+                          } @else {
+                              @for (linea of arrLineas; track $index) {
+                                  <tr>
+                                      <td>
+                                          <button type="button" class="btn btn-sm btn-outline-danger mr-1 mt-1" (click)="EliminarLinea(linea.idCursoOferta)">
+                                              <i class="bi bi-trash"></i>
+                                          </button>
+                                      </td>
+                                      <td>
+                                          <select class="form-select" #pro aria-label="Seleccione el profesional" (change)="EditarLinea(linea.idCursoOferta, pro.value, curso.value, min.value, max.value, inicio.value, fin.value)">
+                                              <option selected value="">Seleccione el profesional</option>
+                                              @for (pro of arrProfesionales; track $index) {
+                                                  <option value="{{pro.idProfesional}}">{{pro.nombre}} {{pro.apellidos}}</option>
+                                              }
+                                          </select>
+                                      </td>
+                                      <td>
+                                          <select class="form-select" #curso aria-label="Seleccione el curso" (change)="EditarLinea(linea.idCursoOferta, pro.value, curso.value, min.value, max.value, inicio.value, fin.value)">
+                                              <option selected value="">Seleccione el curso</option>
+                                              @for (curso of arrCursos; track $index) {
+                                                  <option value="{{curso.idCurso}}">{{curso.nombre}}</option>
+                                              }
+                                          </select>
+                                      </td>
+                                      <td>
+                                          <input type="time" class="form-control" placeholder="HH:MM" #inicio (change)="EditarLinea(linea.idCursoOferta, pro.value, curso.value, min.value, max.value, inicio.value, fin.value)">
+                                      </td>
+                                      <td>
+                                          <input type="time" class="form-control" placeholder="HH:MM" #fin (change)="EditarLinea(linea.idCursoOferta, pro.value, curso.value, min.value, max.value, inicio.value, fin.value)">
+                                      </td>
+                                      <td>
+                                          <input type="number" class="form-control" #max (change)="EditarLinea(linea.idCursoOferta, pro.value, curso.value, min.value, max.value, inicio.value, fin.value)">
+                                      </td>
+                                      <td>
+                                          <input type="number" class="form-control" #min (change)="EditarLinea(linea.idCursoOferta, pro.value, curso.value, min.value, max.value, inicio.value, fin.value)">
+                                      </td>
+                                  </tr>
+                              }
+                          }
+                      </tbody>
+                  </table>
+              </div>
+
+              <div class="mb-3">
+                  <label class="form-label" for="descripcion">Descripcion: </label>
+                  <textarea name="descripcion" rows="4" id="descripcion" placeholder="Ingrese la descripción..." formControlName="descripcion" class="form-control mb-2"></textarea>
+              </div>
+
+              <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button class="btn btn-outline-primary me-md-2" type="submit" [disabled]="!formulario.valid">
+                      @if (cargando) {
+                          <i class="bi bi-hourglass-split"></i> Guardando...
+                      } @else {
+                          <i class="bi bi-plus-circle"></i> Guardar
+                      }
+                  </button>
+                  <button class="btn btn-outline-secondary" type="reset">
+                      <i class="bi bi-x-circle"></i>
+                      Limpiar
+                  </button>
+              </div>
+          </form>
+      } @loading {
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      }
+  </div>
+</div>
