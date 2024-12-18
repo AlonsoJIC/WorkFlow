@@ -1,15 +1,15 @@
 <div
   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
 >
-  <h1 class="h3">Tipos de Identificación</h1>
+  <h1 class="h3">Estado de Orden</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <a
         class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
-        routerLink="/dashboard/catalogos/tipos-identificacion/guardar"
+        routerLink="/dashboard/catalogos/ordenes-estado/guardar"
       >
         <i class="bi bi-plus-circle"></i>
-        Nuevo
+        Nueva
       </a>
     </div>
   </div>
@@ -21,7 +21,7 @@
       <input
         type="search"
         class="form-control"
-        placeholder="Ingrese el tipo de identificación a buscar..."
+        placeholder="Ingrese el estado de orden a buscar..."
         #inputBusqueda
         (keyup)="filtrar(inputBusqueda.value)"
       />
@@ -32,30 +32,28 @@
     <div class="mat-elevation-z1 mt-3">
       @defer {
       <table mat-table [dataSource]="origen" matSort>
-        <ng-container matColumnDef="idTipoIdentificacion">
+        <ng-container matColumnDef="idEstadoOrden">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
-            ID de identificación
+            ID Estado De Orden
           </th>
-          <td mat-cell *matCellDef="let tipo">
-            {{ tipo.idTipoIdentificacion }}
-          </td>
+          <td mat-cell *matCellDef="let estado">{{ estado.idEstadoOrden }}</td>
         </ng-container>
 
         <ng-container matColumnDef="nombre">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
-          <td mat-cell *matCellDef="let tipo">{{ tipo.nombre }}</td>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+          <td mat-cell *matCellDef="let estado">{{ estado.nombre }}</td>
         </ng-container>
 
         <ng-container matColumnDef="editar">
           <th mat-header-cell *matHeaderCellDef>Editar</th>
-          <td mat-cell *matCellDef="let tipo">
+          <td mat-cell *matCellDef="let estado">
             <div class="btn-group" role="group">
               <a
-                title="Editar tipo"
+                title="Editar estado"
                 class="btn btn-sm btn-outline-secondary"
                 [routerLink]="[
-                  '/dashboard/catalogos/tipos-identificacion/actualizar/',
-                  tipo.idTipoIdentificacion
+                  '/dashboard/catalogos/ordenes-estado/actualizar',
+                  estado.idEstadoOrden
                 ]"
               >
                 <i class="bi bi-pencil-square"></i>

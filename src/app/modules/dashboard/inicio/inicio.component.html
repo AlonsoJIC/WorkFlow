@@ -1,61 +1,107 @@
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-  <h1 class="h2">Inicio</h1>
+<div class="offcanvas-header">
+  <h5
+    class="offcanvas-title"
+    id="sidebarMenuLabel"
+    style="font-size: 1.5rem; font-weight: bold; color: #007bff"
+  >
+    Proyecto Progra II
+  </h5>
+  <!-- Eliminar el botón de cierre -->
 </div>
 
 <div class="row row-cols-1 row-cols-md-4 g-4">
   <div class="col">
-      <div class="card border-dark">
-          <img src="img/icons8-manager-94.png" class="card-img-top text-center pt-3" alt="..." />
-          <div class="card-body">
-              <h5 class="card-title text-center">Estudiantes</h5>
-              <p class="card-text text-center">
-                  <a class="btn btn-danger" routerLink="/dashboard/estudiantes/guardar">
-                      <i class="bi bi-plus-square"></i> Registrar Estudiante
-                  </a>
-              </p>
-          </div>
+    <div class="card border-dark">
+      <img
+        src="img/empleado-del-mes.png"
+        class="card-img-top text-center pt-3"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">Empleados</h5>
+        <p class="card-text text-center">
+          <a class="btn btn-secondary" routerLink="/dasboard/empleados/guardar">
+            <i class="bi bi-plus-square"></i> Registrar Empleado
+          </a>
+        </p>
       </div>
+    </div>
   </div>
-
   <div class="col">
-      <div class="card border-dark">
-          <img src="img/icons8-student-male-94.png" class="card-img-top text-center pt-3" alt="..." />
-          <div class="card-body">
-              <h5 class="card-title text-center">Matrícula</h5>
-              <p class="card-text text-center">
-                  <a class="btn btn-secondary" routerLink="/dashboard/matriculas/guardar">
-                      <i class="bi bi-plus-square"></i> Registrar Matrícula
-                  </a>
-              </p>
-          </div>
+    <div class="card border-dark">
+      <img
+        src="img/lista-de-verificacion.png"
+        class="card-img-top text-center pt-3"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">Tarea</h5>
+        <p class="card-text text-center">
+          <a class="btn btn-secondary" routerLink="/dasboard/tareas/guardar">
+            <i class="bi bi-plus-square"></i> Registrar Tarea
+          </a>
+        </p>
       </div>
+    </div>
   </div>
-
   <div class="col">
-      <div class="card border-dark">
-          <img src="img/icons8-manager-94.png"class="card-img-top text-center pt-3" alt="..." />
-          <div class="card-body">
-              <h5 class="card-title text-center">Profesional</h5>
-              <p class="card-text text-center">
-                  <a class="btn btn-danger" routerLink="/dashboard/profesionales/guardar">
-                      <i class="bi bi-plus-square"></i> Registrar Profesional
-                  </a>
-              </p>
-          </div>
+    <div class="card border-dark">
+      <img
+        src="img/orden-de-trabajo.png"
+        class="card-img-top text-center pt-3"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">Ordenes de trabajo</h5>
+        <p class="card-text text-center">
+          <a
+            class="btn btn-secondary"
+            routerLink="/dasboard/ordentrabajo/guardar"
+          >
+            <i class="bi bi-plus-square"></i> Registrar Orden de trabajo
+          </a>
+        </p>
       </div>
+    </div>
   </div>
-
   <div class="col">
-      <div class="card border-dark">
-          <img src="img/icons8-clerk-94.png" class="card-img-top text-center pt-3" alt="..." />
-          <div class="card-body">
-              <h5 class="card-title text-center">Oferta</h5>
-              <p class="card-text text-center">
-                  <a class="btn btn-secondary" routerLink="/dashboard/ofertas/guardar">
-                      <i class="bi bi-plus-square"></i> Generar Oferta
-                  </a>
-              </p>
-          </div>
+    <div class="card border-dark">
+      <img
+        src="img/tarjetas-de-credito.png"
+        class="card-img-top text-center pt-3"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">Tipos de identificacion</h5>
+        <p class="card-text text-center">
+          <a
+            class="btn btn-secondary"
+            routerLink="/dasboard/catalogos/tipos-identificacion/guardar"
+          >
+            <i class="bi bi-plus-square"></i> Registrar tipo de identificacion
+          </a>
+        </p>
       </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card border-dark">
+      <img
+        src="img/order-fulfillment.png"
+        class="card-img-top text-center pt-3"
+        alt="..."
+      />
+      <div class="card-body">
+        <h5 class="card-title text-center">Estado de ordenes</h5>
+        <p class="card-text text-center">
+          <a
+            class="btn btn-secondary"
+            routerLink="/dasboard/catalogos/ordenes-estado/guardar"
+          >
+            <i class="bi bi-plus-square"></i> Verificar estado de orden
+          </a>
+        </p>
+      </div>
+    </div>
   </div>
 </div>

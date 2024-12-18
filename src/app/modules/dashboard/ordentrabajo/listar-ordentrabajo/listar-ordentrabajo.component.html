@@ -1,0 +1,138 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h3">Ordenes de trabajo</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <a
+        class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
+        routerLink="/dashboard/ordentrabajo/guardar"
+      >
+        <i class="bi bi-plus-circle"></i>
+        Nueva
+      </a>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <div class="input-group">
+      <input
+        type="search"
+        class="form-control"
+        placeholder="Ingrese la orden a buscar..."
+        #inputBusqueda
+        (keyup)="filtrar(inputBusqueda.value)"
+      />
+      <span class="input-group-text">
+        <i class="bi bi-search"></i>
+      </span>
+    </div>
+    <div class="mat-elevation-z1 mt-3">
+      @defer {
+      <div class="table-responsive">
+        <table mat-table [dataSource]="origen" matSort>
+          <ng-container matColumnDef="idOrdentrabajo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header># Ordenes</th>
+            <td mat-cell *matCellDef="let ordentrabajo">
+              {{ ordentrabajo.idOrdentrabajo }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="codigo">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Código</th>
+            <td mat-cell *matCellDef="let ordentrabajo">
+              {{ ordentrabajo.estado }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="fecha">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+            <td mat-cell *matCellDef="let ordentrabajo">
+              {{ ordentrabajo.fecha }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="emplaeado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Empleado</th>
+            <td mat-cell *matCellDef="let ordentrabajo">
+              {{ ordentrabajo.emplaeado.nombre }}
+              {{ ordentrabajo.emplaeado.apellidos }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="descripcion">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>
+              Descripción
+            </th>
+            <td mat-cell *matCellDef="let ordentrabajo">
+              {{ ordentrabajo.descripcion }}
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="estado">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+            <td mat-cell *matCellDef="let ordentrabajo">
+              @if (ordentrabajo.estado) {
+              <span class="text-success">Activa</span>
+              } @else {
+              <span class="text-danger">Inactiva</span>
+              }
+            </td>
+          </ng-container>
+
+          <ng-container matColumnDef="opciones">
+            <th mat-header-cell *matHeaderCellDef>Opciones</th>
+            <td mat-cell *matCellDef="let ordentrabajo">
+              <div class="btn-group" role="group">
+                <a
+                  title="Editar orden trabajo"
+                  class="btn btn-sm btn-outline-secondary"
+                  [routerLink]="[
+                    '/dashboard/ordenes/actualizar/',
+                    ordentrabajo.idOrdentrabajo
+                  ]"
+                >
+                  <i class="bi bi-pencil-square"></i>
+                </a>
+                @if (ordentrabajo.estado) {
+                <button
+                  (click)="estado(ordentrabajo.idOrdentrabajo, false)"
+                  type="button"
+                  class="btn btn-sm btn-outline-danger"
+                  title="Inactivar orden"
+                >
+                  <i class="bi bi-x-square"></i>
+                </button>
+                } @else {
+                <button
+                  (click)="estado(ordentrabajo.idOrdentrabajo, true)"
+                  type="button"
+                  class="btn btn-sm btn-outline-success"
+                  title="Activar orden"
+                >
+                  <i class="bi bi-check-square"></i>
+                </button>
+                }
+                <button
+                  (click)="cursos(ordentrabajo.lineas)"
+                  class="btn btn-sm btn-outline-info"
+                  title="Ver Cursos"
+                >
+                  <i class="bi bi-journals"></i>
+                </button>
+              </div>
+            </td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+          <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+        </table>
+      </div>
+      } @loading {
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      }
+    </div>
+  </div>
+</div>

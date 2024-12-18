@@ -1,0 +1,110 @@
+/* estilos.component.css o estilos.component.scss */
+.estado-activo {
+  color: green;
+  font-weight: bold;
+}
+
+.estado-inactivo {
+  color: red;
+  font-weight: bold;
+}
+/* General */
+.container {
+  padding: 1rem;
+  background-color: #f8f9fa; /* Fondo claro */
+  border-radius: 0.5rem;
+}
+
+/* Encabezado */
+h1.h3 {
+  font-weight: bold;
+  color: #ffffff; /* Texto oscuro */
+}
+
+.border-bottom {
+  border-color: #dee2e6 !important; /* Línea inferior */
+}
+
+/* Botones */
+.btn-outline-primary {
+  color: #0d6efd;
+  border-color: #0d6efd;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover {
+  color: white;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+.btn-sm {
+  font-size: 0.875rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Input de búsqueda */
+.input-group {
+  margin-top: 1rem;
+}
+
+.form-control {
+  border-radius: 0.25rem 0 0 0.25rem;
+  border-color: #ced4da;
+}
+
+.input-group-text {
+  background-color: #f1f3f5;
+  border-radius: 0 0.25rem 0.25rem 0;
+  border-color: #ced4da;
+  color: #495057;
+}
+
+/* Tabla */
+.mat-elevation-z1 {
+  background: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th.mat-header-cell {
+  background-color: #e9ecef; /* Fondo del encabezado */
+  font-weight: bold;
+  text-align: left;
+  padding: 0.75rem;
+  color: #495057;
+}
+
+td.mat-cell {
+  padding: 0.75rem;
+  color: #343a40;
+}
+
+tr.mat-row:nth-child(even) {
+  background-color: #f8f9fa; /* Rayado */
+}
+
+tr.mat-row:hover {
+  background-color: #e2e6ea; /* Hover */
+  transition: background-color 0.2s;
+}
+
+/* Iconos y enlaces */
+i.bi {
+  font-size: 1.2rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Barra de progreso */
+mat-progress-bar {
+  margin-top: 1rem;
+  background-color: #e9ecef;
+}

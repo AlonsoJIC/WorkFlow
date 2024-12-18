@@ -1,0 +1,75 @@
+/* Estilos generales para las tarjetas */
+.card {
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.6s ease, box-shadow 0.3s ease;
+  width: 250px; /* Ancho fijo para todas las tarjetas */
+  height: 150px; /* Alto fijo para todas las tarjetas */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Distribuye el contenido de forma uniforme */
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+/* Títulos dentro de las tarjetas */
+.card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #0a0b5c;
+  text-align: center;
+  margin-top: 10px;
+}
+
+/* Texto centrado */
+.card-text {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+/* Estilos para los botones */
+.btn {
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Botón de Registrar Empleado */
+.btn-danger {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
+
+/* Botón de Registrar Tarea */
+.btn-secondary {
+  background-color: #283679;
+  color: white;
+  border: none;
+}
+
+.btn-secondary:hover {
+  background-color: #2c7f8a;
+}
+
+/* Estilo del contenedor de las tarjetas */
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}

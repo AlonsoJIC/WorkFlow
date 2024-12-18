@@ -2,19 +2,19 @@ import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule, FormControl, FormGroup, Validators } from '@angular/forms';
 import { RouterModule, ActivatedRoute, Router } from '@angular/router';
 import Swal from 'sweetalert2';
-import { TipoIdentificacion } from '../../../../../models/tipoIdentificacion';
-import { TipoIdentificacionService } from '../../../../../services/tipoIdentificacion.service';
+import { EstadoOrden } from '../../../../../models/estadodeorden';
+import { EstadoOrdenService } from '../../../../../services/estadodeorden.service';
 
 @Component({
-  selector: 'app-actualizar-tipo-identificacion',
+  selector: 'app-actualizar-estado-de-orden',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule],
-  templateUrl: './actualizar-tipo-identificacion.component.html',
-  styleUrl: './actualizar-tipo-identificacion.component.css'
+  templateUrl: './actualizar-estado-de-orden.component.html',
+  styleUrl: './actualizar-estado-de-orden.component.css'
 })
-export class ActualizarTipoIdentificacionComponent implements AfterViewInit, OnInit {
+export class ActualizarEstadoOrdenComponent implements AfterViewInit, OnInit {
   // Variables componente.
-  private idTipoIdentificacion: number = 0;
+  private idEstadoOrden: number = 0;
 
   // Variables del form.
   public cargando: boolean = false;
@@ -25,7 +25,7 @@ export class ActualizarTipoIdentificacionComponent implements AfterViewInit, OnI
   // Definir el formulario.
   public formulario: FormGroup;
 
-  constructor(private servicio: TipoIdentificacionService, private router: Router, private activeRoute: ActivatedRoute) {
+  constructor(private servicio: EstadoOrdenService, private router: Router, private activeRoute: ActivatedRoute) {
     this.nombre = new FormControl('', Validators.required);
     this.formulario = new FormGroup({
       nombre: this.nombre,
@@ -33,9 +33,9 @@ export class ActualizarTipoIdentificacionComponent implements AfterViewInit, OnI
   }
 
   ngAfterViewInit(): void {
-    this.servicio.Consultar(this.idTipoIdentificacion).subscribe({
-      next: (tipo: TipoIdentificacion) => {
-        this.nombre.setValue(tipo.nombre);
+    this.servicio.Consultar(this.idEstadoOrden).subscribe({
+      next: (estado: EstadoOrden) => {
+        this.nombre.setValue(estado.nombre);
       }
     });
   }
@@ -44,9 +44,9 @@ export class ActualizarTipoIdentificacionComponent implements AfterViewInit, OnI
     // Obetener el Id que viene en la URL.
     if (this.activeRoute.snapshot.paramMap.get('id') != null && this.activeRoute.snapshot.paramMap.get('id') != '0' &&
       typeof this.activeRoute.snapshot.paramMap.get('id') != 'undefined') {
-      this.idTipoIdentificacion = parseInt(this.activeRoute.snapshot.paramMap.get('id')!);
+      this.idEstadoOrden = parseInt(this.activeRoute.snapshot.paramMap.get('id')!);
     } else {
-      this.router.navigate(['/dashboard/catalogos/tipos-identificacion']);
+      this.router.navigate(['/dashboard/catalogos/ordenes-estado']);
     }
   }
 
@@ -55,24 +55,24 @@ export class ActualizarTipoIdentificacionComponent implements AfterViewInit, OnI
     this.cargando = true;
 
     // Construir el objeto.
-    const tipo = {
-      idTipoIdentificacion: this.idTipoIdentificacion,
+    const estado = {
+      idEstadoOrden: this.idEstadoOrden,
       nombre: this.nombre.value,
-    } as TipoIdentificacion;
+    } as EstadoOrden;
 
-    this.servicio.Actualizar(tipo).subscribe({
+    this.servicio.Actualizar(estado).subscribe({
       next: (resp: boolean) => {
         if (resp) {
           Swal.fire({
             title: "Aviso",
-            text: "Se actualizó correctamente el tipo de identificación.",
+            text: "Se actualizó correctamente el estado de la orden.",
             icon: "success",
             confirmButtonText: "Aceptar"
           });
         } else {
           Swal.fire({
             title: "Aviso",
-            text: "No se pudo actualizar el tipo de identificación, intente nuevamente.",
+            text: "No se pudo actualizar el estado de la orden, intente nuevamente.",
             icon: "warning",
             confirmButtonText: "Aceptar"
           });
@@ -88,7 +88,7 @@ export class ActualizarTipoIdentificacionComponent implements AfterViewInit, OnI
       },
       complete: () => {
         this.cargando = false;
-        this.router.navigate(["/dashboard/catalogos/tipos-identificacion"]);
+        this.router.navigate(["/dashboard/catalogos/ordenes-estado"]);
       }
     });
   }

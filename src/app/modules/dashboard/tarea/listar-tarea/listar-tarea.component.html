@@ -1,0 +1,97 @@
+<div
+  class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
+>
+  <h1 class="h3">Tareas</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group me-2">
+      <a
+        class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
+        routerLink="/dashboard/tareas/guardar"
+      >
+        <i class="bi bi-plus-circle"></i>
+        Agregar tarea
+      </a>
+    </div>
+  </div>
+</div>
+
+<table mat-table [dataSource]="origen" matSort class="mat-elevation-z8">
+  <!-- Definición de columnas -->
+  <ng-container matColumnDef="idTarea">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>ID Tarea</th>
+    <td mat-cell *matCellDef="let tarea">{{ tarea.idTarea }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="horaInicio">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora Inicio</th>
+    <td mat-cell *matCellDef="let tarea">{{ tarea.horaInicio }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="horaFin">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Hora Fin</th>
+    <td mat-cell *matCellDef="let tarea">{{ tarea.horaFin }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="nombre">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombre</th>
+    <td mat-cell *matCellDef="let tarea">{{ tarea.nombre }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="descripcion">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Descripción</th>
+    <td mat-cell *matCellDef="let tarea">{{ tarea.descripcion }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="estado">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+    <td
+      mat-cell
+      *matCellDef="let tarea"
+      [ngClass]="tarea.estado ? 'estado-activo' : 'estado-inactivo'"
+    >
+      {{ tarea.estado ? "Activo" : "Inactivo" }}
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="opciones">
+    <th mat-header-cell *matHeaderCellDef>Opciones</th>
+    <td mat-cell *matCellDef="let tarea">
+      <div class="btn-group" role="group">
+        <!-- Botón Editar -->
+        <a
+          title="Editar tarea"
+          class="btn btn-sm btn-outline-secondary"
+          [routerLink]="['/dashboard/tareas/actualizar/', tarea.idTarea]"
+        >
+          <i class="bi bi-pencil-square"></i>
+        </a>
+
+        <!-- Botón Activar/Desactivar -->
+        <button
+          (click)="estado(tarea.idTarea, !tarea.estado)"
+          type="button"
+          class="btn btn-sm"
+          [ngClass]="
+            tarea.estado ? 'btn-outline-danger' : 'btn-outline-success'
+          "
+          [title]="tarea.estado ? 'Desactivar tarea' : 'Activar tarea'"
+        >
+          <i
+            [class.bi-x-square]="tarea.estado"
+            [class.bi-check-square]="!tarea.estado"
+          ></i>
+        </button>
+      </div>
+    </td>
+  </ng-container>
+
+  <!-- Fila de la tabla -->
+  <tr mat-header-row *matHeaderRowDef="columnas"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnas"></tr>
+</table>
+
+<mat-paginator
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25]"
+  showFirstLastButtons
+></mat-paginator>

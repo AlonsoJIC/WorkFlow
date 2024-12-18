@@ -12,11 +12,11 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
   standalone: true,
   imports: [RouterModule, MatTableModule, MatPaginatorModule, MatSortModule, MatProgressBarModule],
   templateUrl: './listar-tipo-identificacion.component.html',
-  styleUrl: './listar-tipo-identificacion.component.scss'
+  styleUrl: './listar-tipo-identificacion.component.css'
 })
-export class ListarTipoIdentificacionComponent implements AfterViewInit  {
+export class ListarTipoIdentificacionComponent implements AfterViewInit {
   // Variables.
-  columnas: string[] = ["idTipoIdentificacion", "nombre", "mascara", "opciones"];
+  columnas: string[] = ["idTipoIdentificacion", "nombre", "editar"];
   origen = new MatTableDataSource<TipoIdentificacion>();
 
   // SubComponentes de la tabla.
@@ -31,8 +31,8 @@ export class ListarTipoIdentificacionComponent implements AfterViewInit  {
 
   private cargarTabla(): void {
     this.servicio.Listar().subscribe({
-      next: (cursos: TipoIdentificacion[]) => {
-        this.origen = new MatTableDataSource<TipoIdentificacion>(cursos);
+      next: (tipos: TipoIdentificacion[]) => {
+        this.origen = new MatTableDataSource<TipoIdentificacion>(tipos);
         this.origen.paginator = this.paginador;
         this.origen.sort = this.ordenamiento;
       },

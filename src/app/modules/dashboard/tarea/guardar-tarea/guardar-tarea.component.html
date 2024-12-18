@@ -1,12 +1,12 @@
 <div
   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
 >
-  <h1 class="h3">Guardar tipo de identificación</h1>
+  <h1 class="h3">Guardar tarea</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <a
         class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
-        routerLink="/dashboard/catalogos/tipos-identificacion"
+        routerLink="/dashboard/tareas"
       >
         <i class="bi bi-backspace"></i>
         Regresar
@@ -16,7 +16,7 @@
 </div>
 
 <div class="card">
-  <div class="card-header">Complete la información solicitada</div>
+  <div class="card-header">Complete todos los campos requeridos</div>
   <div class="card-body">
     <form [formGroup]="formulario" (ngSubmit)="Guardar()">
       <div class="mb-3">
@@ -34,6 +34,56 @@
         @if (nombre.errors && (nombre.dirty || nombre.touched)) {
         <span class="text-danger mb-2">El nombre es requerido.</span>
         }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="horaInicio"
+          >Hora de inicio: <span class="text-danger">*</span></label
+        >
+        <input
+          type="time"
+          name="horaInicio"
+          id="horaInicio"
+          formControlName="horaInicio"
+          class="form-control mb-2"
+        />
+        <span
+          *ngIf="horaInicio.errors && (horaInicio.dirty || horaInicio.touched)"
+          class="text-danger"
+        >
+          La hora inicial es requerida.
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="horaFin"
+          >Hora de fin: <span class="text-danger">*</span></label
+        >
+        <input
+          type="time"
+          name="horaFin"
+          id="horaFin"
+          formControlName="horaFin"
+          class="form-control mb-2"
+        />
+        <span
+          *ngIf="horaFin.errors && (horaFin.dirty || horaFin.touched)"
+          class="text-danger"
+        >
+          La hora final es requerida.
+        </span>
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="descripcion">Descripción: </label>
+        <textarea
+          name="descripcion"
+          rows="4"
+          id="descripcion"
+          placeholder="Ingrese la descripción..."
+          formControlName="descripcion"
+          class="form-control mb-2"
+        ></textarea>
       </div>
 
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">

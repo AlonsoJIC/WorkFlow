@@ -1,18 +1,18 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router, RouterModule } from '@angular/router';
-import { TipoIdentificacionService } from '../../../../../services/tipoIdentificacion.service';
-import { TipoIdentificacion } from '../../../../../models/tipoIdentificacion';
 import Swal from 'sweetalert2';
+import { EstadoOrdenService } from '../../../../../services/estadodeorden.service';
+import { EstadoOrden } from '../../../../../models/estadodeorden';
 
 @Component({
-  selector: 'app-guardar-tipo-identificacion',
+  selector: 'app-guardar-estado-de-orden',
   standalone: true,
   imports: [RouterModule, ReactiveFormsModule],
-  templateUrl: './guardar-tipo-identificacion.component.html',
-  styleUrl: './guardar-tipo-identificacion.component.css'
+  templateUrl: './guardar-estado-de-orden.component.html',
+  styleUrls: ['./guardar-estado-de-orden.component.css']
 })
-export class GuardarTipoIdentificacionComponent {
+export class GuardarEstadoOrdenComponent {
   // Variables del form.
   public cargando: boolean = false;
 
@@ -22,7 +22,7 @@ export class GuardarTipoIdentificacionComponent {
   // Definir el formulario.
   public formulario: FormGroup;
 
-  constructor(private servicio: TipoIdentificacionService, private router: Router) {
+  constructor(private servicio: EstadoOrdenService, private router: Router) {
     this.nombre = new FormControl('', Validators.required);
     this.formulario = new FormGroup({
       nombre: this.nombre,
@@ -30,28 +30,39 @@ export class GuardarTipoIdentificacionComponent {
   }
 
   public Guardar(): void {
+    // Validar el formulario antes de proceder
+    if (this.formulario.invalid) {
+      Swal.fire({
+        title: "Error",
+        text: "Por favor, complete todos los campos requeridos.",
+        icon: "error",
+        confirmButtonText: "Aceptar"
+      });
+      return;
+    }
+
     // Asignar el estado del efecto del botón.
     this.cargando = true;
 
     // Construir el objeto.
-    const tipo = {
-      idTipoIdentificacion: 0,
+    const estado = {
+      idEstadoOrden: 0,
       nombre: this.nombre.value,
-    } as TipoIdentificacion;
+    } as EstadoOrden;
 
-    this.servicio.Guardar(tipo).subscribe({
+    this.servicio.Guardar(estado).subscribe({
       next: (resp: boolean) => {
         if (resp) {
           Swal.fire({
             title: "Aviso",
-            text: "Se guardó correctamente el tipo de identificación.",
+            text: "Se guardó correctamente el Estado De Orden.",
             icon: "success",
             confirmButtonText: "Aceptar"
           });
         } else {
           Swal.fire({
             title: "Aviso",
-            text: "No se pudo guardar el tipo de identificación, intente nuevamente.",
+            text: "No se pudo guardar el Estado De Orden, intente nuevamente.",
             icon: "warning",
             confirmButtonText: "Aceptar"
           });
@@ -67,7 +78,7 @@ export class GuardarTipoIdentificacionComponent {
       },
       complete: () => {
         this.cargando = false;
-        this.router.navigate(["/dashboard/catalogos/tipos-identificacion"]);
+        this.router.navigate(["/dashboard/catalogos/estado-de-orden"]);
       }
     });
   }

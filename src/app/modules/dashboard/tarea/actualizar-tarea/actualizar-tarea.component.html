@@ -1,12 +1,12 @@
 <div
   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
 >
-  <h1 class="h3">Actualizar tipo de identificación</h1>
+  <h1 class="h3">Actualizar tarea</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <a
         class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
-        routerLink="/dashboard/catalogos/tipos-identificacion"
+        routerLink="/dashboard/tareas"
       >
         <i class="bi bi-backspace"></i>
         Regresar
@@ -15,10 +15,10 @@
   </div>
 </div>
 
-@defer {
 <div class="card">
   <div class="card-header">Complete todos los campos requeridos</div>
   <div class="card-body">
+    @defer {
     <form [formGroup]="formulario" (ngSubmit)="Guardar()">
       <div class="mb-3">
         <label class="form-label" for="nombre"
@@ -37,6 +37,52 @@
         }
       </div>
 
+      <div class="mb-3">
+        <label class="form-label" for="horaInicio"
+          >Hora de inicio: <span class="text-danger">*</span></label
+        >
+        <input
+          type="time"
+          name="horaInicio"
+          id="horaInicio"
+          placeholder="Ingrese la hora..."
+          formControlName="horaInicio"
+          class="form-control mb-2"
+        />
+        @if (horaInicio.errors && (horaInicio.dirty || horaInicio.touched)) {
+        <span class="text-danger mb-2">la hora inicial es requerida.</span>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="horaFin"
+          >Hora de Fin: <span class="text-danger">*</span></label
+        >
+        <input
+          type="time"
+          name="horaFin"
+          id="horaFin"
+          placeholder="Ingrese la hora..."
+          formControlName="horaFin"
+          class="form-control mb-2"
+        />
+        @if (horaInicio.errors && (horaFin.dirty || horaFin.touched)) {
+        <span class="text-danger mb-2">La hora final es requerida.</span>
+        }
+      </div>
+
+      <div class="mb-3">
+        <label class="form-label" for="descripcion">Descripción: </label>
+        <textarea
+          name="descripcion"
+          rows="4"
+          id="descripcion"
+          placeholder="Ingrese la descripción..."
+          formControlName="descripcion"
+          class="form-control mb-2"
+        ></textarea>
+      </div>
+
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
         <button
           class="btn btn-outline-primary me-md-2"
@@ -53,8 +99,8 @@
         </button>
       </div>
     </form>
+    } @placeholder {
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    }
   </div>
 </div>
-} @loading {
-<p>Cargando...</p>
-}

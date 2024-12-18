@@ -1,12 +1,12 @@
 <div
   class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom"
 >
-  <h1 class="h3">Guardar tipo de identificación</h1>
+  <h1 class="h3">Actualizar estado de orden</h1>
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group me-2">
       <a
         class="btn btn-sm btn-outline-primary d-flex align-items-center gap-1"
-        routerLink="/dashboard/catalogos/tipos-identificacion"
+        routerLink="/dashboard/catalogos/ordenes-estado"
       >
         <i class="bi bi-backspace"></i>
         Regresar
@@ -15,8 +15,9 @@
   </div>
 </div>
 
+@defer {
 <div class="card">
-  <div class="card-header">Complete la información solicitada</div>
+  <div class="card-header">Complete todos los campos requeridos</div>
   <div class="card-body">
     <form [formGroup]="formulario" (ngSubmit)="Guardar()">
       <div class="mb-3">
@@ -54,3 +55,6 @@
     </form>
   </div>
 </div>
+} @loading {
+<p>Cargando...</p>
+}
